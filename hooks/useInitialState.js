@@ -31,6 +31,31 @@ const useInitialState = () => {
     });
   }
 
+  const handleAddToCart = (item) => {
+    products.filter(product => {
+      if (item === product.name) {
+        setCart([...cart, product])
+      }
+    })
+  }
+
+  /* const handleAddToCart = (item) => {
+    if (cart.length === 0) {
+      products.filter(product => {
+        if (item === product.name) {
+          setCart([...cart, product])
+          console.log('adding new item')
+        }})}
+    cart.filter(cartProduct => {
+      if (item === cartProduct.name) {
+        cartProduct.cart+=1
+        console.log('adding existing item')
+      }
+    })
+  } */
+
+
+
   return {
     products,
     search,
@@ -38,6 +63,7 @@ const useInitialState = () => {
     cart,
     setCart,
     filteredProducts,
+    handleAddToCart,
   };
 };
 

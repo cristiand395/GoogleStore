@@ -1,16 +1,18 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { IconContext } from "react-icons";
 import Image from 'next/image';
 import { BsFillCartFill } from "react-icons/bs";
 import styles from '@styles/Header.module.css';
 import CartModal from '@components/CartModal';
-import useGetProducts from '@hooks/useGetProducts';
+import { useAppContext } from "@context/AppContext";
 
 const Header = () => {
   const [showCartModal, setShowCartModal] = useState(false);
   const toggleCartModal = () => {
     setShowCartModal(!showCartModal);
   }
+
+  const { cart } = useAppContext();
 
   return (
     <div className={styles.header}>
@@ -28,7 +30,7 @@ const Header = () => {
         <IconContext.Provider value={{ color: "gray", className:styles. iconCart }}> 
           <BsFillCartFill />
         </IconContext.Provider>
-        <div className={styles.cartCounter}>2</div>
+        <div className={styles.cartCounter}>{cart.length}</div>
 
         {showCartModal && <CartModal />}
       </div>

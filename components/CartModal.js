@@ -1,20 +1,22 @@
-import useGetProducts from "@hooks/useGetProducts";
+import { useAppContext }  from "@context/AppContext";
 import styles from "@styles/CartModal.module.css";
 import CartModalItem from "./CartModalItem";
 
-const CardModal = () => {
-  const products = useGetProducts();
+const CartModal = () => {
+  const {cart} = useAppContext();
 
   return (
     <div className={styles.cartModal}>
       <div className={styles.cartModalContent}>
         <h4 className={styles.title}>Shopping Cart</h4>
 
-        {products.map(product => (
+        {cart.map(item => (
           <CartModalItem
-            key={product.id}
-            imgUrl={product.image}
-            name={product.name}
+            key={item.id}
+            imgUrl={item.image}
+            name={item.name}
+            cart={item.cart}
+            price={item.price}
             />
         ))}
         
@@ -28,4 +30,4 @@ const CardModal = () => {
   );
 }
 
-export default CardModal;
+export default CartModal;

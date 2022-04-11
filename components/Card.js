@@ -5,6 +5,7 @@ import styles from '@styles/Card.module.css'
 import ButtonAddCard from '@components/ButtonAddCard';
 
 const Card = ({...props}) => {
+
   return (
     <div className={styles.card}>
       <Link href='/'>
@@ -20,7 +21,8 @@ const Card = ({...props}) => {
       </Link>
       <div className={styles.bottomCard}>
         <p className={styles.price}>${props.price}</p>
-        <ButtonAddCard />
+        <ButtonAddCard 
+          itemName={props.name}/>
       </div>
     </div>
   );
